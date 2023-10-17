@@ -44,6 +44,19 @@ class Employee
     end
 end
 
+class Manager < Employee
+    def send_report
+        puts "Sending email...."
+        puts "email sent!"
+    end
+end
+
+class Director < Manager
+    def do_something
+        puts "Get to the thing!"
+    end
+end
+
 employee1 = Employee.new({first_name: "Majora", last_name: "Carter", salary: 80000, active: true})
 employee2 = Employee.new({first_name: "Danilo", last_name: "Campos", salary: 70000, active: true})
 employee1.print_info
@@ -55,3 +68,11 @@ puts employee1.last_name
 puts employee1.active
 employee1.active =(false)
 puts employee1.active
+
+manager = Manager.new({first_name: "Saron", last_name: "Yitbarek", salary: 100000, active: true})
+manager.send_report
+manager.print_info
+
+director = Director.new({first_name: "Otis", last_name: "Ray", salary: 150000, active: true})
+director.print_info
+director.do_something
