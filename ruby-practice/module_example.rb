@@ -1,9 +1,4 @@
-class Transportation
-    def initialize
-        @speed = 0
-        @direction = 'north'
-    end
-    
+module Transportation
     def brake
         @speed = 0
     end
@@ -15,29 +10,32 @@ class Transportation
     def turn(new_direction)
         @direction = new_direction
     end
-    
 end
 
-class Car < Transportation
-    def initialize 
-        super
+class Car
+include Transportation
+    def initialize
+        @speed = 0
+        @direction = 'north'    
         @fuel = 'gas'
         @make = 'volkswagen'
         @model = 'golf'
     end
-    def fuel
-        puts @fuel
-    end
     def honk_horn
       puts "Beeeeeeep!"
     end
+    def fuel
+        puts @fuel
+    end
 end
   
-class Bike < Transportation
+class Bike
+include Transportation
     def initialize
-        super
-        @type = 'mountain'
+        @speed = 0
+        @direction = 'north' 
         @weight = '10 lbs'
+        @type = 'mountain'
     end
     def ring_bell
       puts "Ring ring!"
@@ -46,6 +44,7 @@ class Bike < Transportation
         puts @weight
     end
 end
+
 
 bicycle = Bike.new
 bicycle.ring_bell
