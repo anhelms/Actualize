@@ -9,22 +9,24 @@
 # hat3 = {:color => "pink", :price => 36.00, :size => "medium"}
 
 # puts "We have #{hat1[:size]} #{hat1[:color]} hats that are #{hat1[:price]}"
+module Things
+    attr_reader :name, :color, :price, :size
+    attr_writer :price
 
-class Items
-    attr_reader :color, :price, :size
-    attr_writer :color, :price, :size
-
-    def initialize(color, price, size)
+    def initialize(name, color, price, size)
+        @name = name
         @color = color
         @price = price
         @size = size
     end
-
     def print_info
-        puts "We have #{@size} #{@color} hats that are #{@price}"
+        puts "We have #{@size} #{@color} #{@name} that are #{@price}"
     end
 end
-hat1 = Items.new("purple", 30.00, "small")
-hat2 = Items.new("blue", 35.00, "large")
-hat1.print_info
-hat2.print_info
+
+class Items
+include Things
+def sale 
+    puts "#{name} are on sale!"
+end
+end
